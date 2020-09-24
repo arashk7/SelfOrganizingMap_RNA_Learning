@@ -44,7 +44,7 @@ pcolor(som.distance_map().T)
 colorbar()
 markers = ['o', 's']
 colors = ['r', 'g']
-Y = Y[:, ]
+Y=Y.values
 print(Y)
 for i, x in enumerate(X):
     w = som.winner(x)
