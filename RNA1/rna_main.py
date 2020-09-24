@@ -23,7 +23,6 @@ features = features.replace(np.nan, 0, regex=True)
 # print(features)
 X = features[['q1', 'q2', 'q3', 'q4', 'q5', 'mis1', 'mis2', 'mis3', 'mis4', 'mis5']].astype(float)
 Y = features['sample'].astype(int)
-
 from sklearn.preprocessing import MinMaxScaler
 
 sc = MinMaxScaler(feature_range=(0, 1))
@@ -33,9 +32,9 @@ X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.25, shuffl
 
 from RNA1.minisom import MiniSom
 
-som = MiniSom(x=10, y=10, input_len=10, sigma=1.0, learning_rate=0.5)
+som = MiniSom(x=5, y=5, input_len=10, sigma=1.0, learning_rate=0.5)
 som.random_weights_init(X)
-som.train_random(data=X, num_iteration=100)
+som.train_random(data=X, num_iteration=10)
 
 from pylab import bone, pcolor, colorbar, plot, show
 
@@ -58,9 +57,6 @@ for i, x in enumerate(X):
 show()
 
 print('done')
-# clf = RandomForestClassifier(n_estimators=80)
-# clf.fit(X_train, y_train)
-# y_pred = clf.predict(X_test)
 
 # confusion_matrix = pd.crosstab(y_test, y_pred, rownames=['Actual'], colnames=['Predicted'])
 # sn.heatmap(confusion_matrix, annot=True)
